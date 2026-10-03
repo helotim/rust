@@ -1,0 +1,544 @@
+error: First Pass analysis includes:
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:112:47
+   |
+LL |             let c = #[rustc_capture_analysis] || drop(&m.a.0);
+   |                                               ^^^^^^^^^^^^^^^
+   |
+note: Capturing m[Deref,(0, 0),Deref,(0, 0)] -> Immutable
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:112:56
+   |
+LL |             let c = #[rustc_capture_analysis] || drop(&m.a.0);
+   |                                                        ^^^^^
+
+error: Min Capture analysis includes:
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:112:47
+   |
+LL |             let c = #[rustc_capture_analysis] || drop(&m.a.0);
+   |                                               ^^^^^^^^^^^^^^^
+   |
+note: Min Capture m[Deref,(0, 0),Deref] -> Immutable
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:112:56
+   |
+LL |             let c = #[rustc_capture_analysis] || drop(&m.a.0);
+   |                                                        ^^^^^
+
+error: First Pass analysis includes:
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:128:47
+   |
+LL |             let c = #[rustc_capture_analysis] || drop(m.a);
+   |                                               ^^^^^^^^^^^^
+   |
+note: Capturing m[Deref,(0, 0)] -> ByCopy
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:128:55
+   |
+LL |             let c = #[rustc_capture_analysis] || drop(m.a);
+   |                                                       ^^^
+
+error: Min Capture analysis includes:
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:128:47
+   |
+LL |             let c = #[rustc_capture_analysis] || drop(m.a);
+   |                                               ^^^^^^^^^^^^
+   |
+note: Min Capture m[Deref,(0, 0)] -> ByCopy
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:128:55
+   |
+LL |             let c = #[rustc_capture_analysis] || drop(m.a);
+   |                                                       ^^^
+
+error: First Pass analysis includes:
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:17:50
+   |
+LL |           let _closure = #[rustc_capture_analysis] || {
+   |  __________________________________________________^
+LL | |
+LL | |
+LL | |             let _i = unsafe { *packed.0.field };
+...  |
+LL | |         };
+   | |_________^
+   |
+note: Capturing packed[(0, 0),(0, 0),Deref] -> ByCopy
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:20:31
+   |
+LL |             let _i = unsafe { *packed.0.field };
+   |                               ^^^^^^^^^^^^^^^
+
+error: Min Capture analysis includes:
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:17:50
+   |
+LL |           let _closure = #[rustc_capture_analysis] || {
+   |  __________________________________________________^
+LL | |
+LL | |
+LL | |             let _i = unsafe { *packed.0.field };
+...  |
+LL | |         };
+   | |_________^
+   |
+note: Min Capture packed[] -> Immutable
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:20:31
+   |
+LL |             let _i = unsafe { *packed.0.field };
+   |                               ^^^^^^^^^^^^^^^
+
+error: First Pass analysis includes:
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:30:43
+   |
+LL |           let c = #[rustc_capture_analysis] || {
+   |  ___________________________________________^
+LL | |
+LL | |
+LL | |             let y = x;
+...  |
+LL | |         };
+   | |_________^
+   |
+note: Capturing x[] -> ByCopy
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:33:21
+   |
+LL |             let y = x;
+   |                     ^
+
+error: Min Capture analysis includes:
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:30:43
+   |
+LL |           let c = #[rustc_capture_analysis] || {
+   |  ___________________________________________^
+LL | |
+LL | |
+LL | |             let y = x;
+...  |
+LL | |         };
+   | |_________^
+   |
+note: Min Capture x[] -> ByCopy
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:33:21
+   |
+LL |             let y = x;
+   |                     ^
+
+error: First Pass analysis includes:
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:41:43
+   |
+LL |           let c = #[rustc_capture_analysis] || {
+   |  ___________________________________________^
+LL | |
+LL | |
+LL | |             let y = x.0;
+...  |
+LL | |         };
+   | |_________^
+   |
+note: Capturing x[Deref,(0, 0)] -> Immutable
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:44:21
+   |
+LL |             let y = x.0;
+   |                     ^^^
+
+error: Min Capture analysis includes:
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:41:43
+   |
+LL |           let c = #[rustc_capture_analysis] || {
+   |  ___________________________________________^
+LL | |
+LL | |
+LL | |             let y = x.0;
+...  |
+LL | |         };
+   | |_________^
+   |
+note: Min Capture x[Deref] -> Immutable
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:44:21
+   |
+LL |             let y = x.0;
+   |                     ^^^
+
+error: First Pass analysis includes:
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:52:43
+   |
+LL |           let c = #[rustc_capture_analysis] || {
+   |  ___________________________________________^
+LL | |
+LL | |
+LL | |             let y = x.0;
+...  |
+LL | |         };
+   | |_________^
+   |
+note: Capturing x[Deref,(0, 0)] -> ByCopy
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:55:21
+   |
+LL |             let y = x.0;
+   |                     ^^^
+
+error: Min Capture analysis includes:
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:52:43
+   |
+LL |           let c = #[rustc_capture_analysis] || {
+   |  ___________________________________________^
+LL | |
+LL | |
+LL | |             let y = x.0;
+...  |
+LL | |         };
+   | |_________^
+   |
+note: Min Capture x[Deref,(0, 0)] -> ByCopy
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:55:21
+   |
+LL |             let y = x.0;
+   |                     ^^^
+
+error: First Pass analysis includes:
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:66:43
+   |
+LL |           let c = #[rustc_capture_analysis] || {
+   |  ___________________________________________^
+LL | |
+LL | |
+LL | |             println!("{:?}", u);
+...  |
+LL | |         };
+   | |_________^
+   |
+note: Capturing u[] -> Immutable
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:69:30
+   |
+LL |             println!("{:?}", u);
+   |                              ^
+note: Capturing u[(1, 0)] -> Mutable
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:73:13
+   |
+LL |             u.1.truncate(0);
+   |             ^^^
+note: Capturing u[(0, 0),(0, 0)] -> ByValue
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:75:18
+   |
+LL |             drop(u.0.0);
+   |                  ^^^^^
+
+error: Min Capture analysis includes:
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:66:43
+   |
+LL |           let c = #[rustc_capture_analysis] || {
+   |  ___________________________________________^
+LL | |
+LL | |
+LL | |             println!("{:?}", u);
+...  |
+LL | |         };
+   | |_________^
+   |
+note: Min Capture u[] -> ByValue
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:69:30
+   |
+LL |             println!("{:?}", u);
+   |                              ^ u[] used here
+...
+LL |             drop(u.0.0);
+   |                  ^^^^^ u[] captured as ByValue here
+
+error: First Pass analysis includes:
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:86:43
+   |
+LL |           let c = #[rustc_capture_analysis] || {
+   |  ___________________________________________^
+LL | |
+LL | |
+LL | |             println!("{:?}", u);
+...  |
+LL | |         };
+   | |_________^
+   |
+note: Capturing u[] -> Immutable
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:89:30
+   |
+LL |             println!("{:?}", u);
+   |                              ^
+note: Capturing u[(1, 0)] -> Mutable
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:93:13
+   |
+LL |             u.1 = '\0';
+   |             ^^^
+note: Capturing u[(0, 0),(0, 0)] -> ByCopy
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:96:18
+   |
+LL |             drop(u.0.0); // `u.0.0` captured by ByCopy
+   |                  ^^^^^
+
+error: Min Capture analysis includes:
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:86:43
+   |
+LL |           let c = #[rustc_capture_analysis] || {
+   |  ___________________________________________^
+LL | |
+LL | |
+LL | |             println!("{:?}", u);
+...  |
+LL | |         };
+   | |_________^
+   |
+note: Min Capture u[] -> Mutable
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:89:30
+   |
+LL |             println!("{:?}", u);
+   |                              ^ u[] used here
+...
+LL |             u.1 = '\0';
+   |             ^^^ u[] captured as Mutable here
+
+error: First Pass analysis includes:
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:143:43
+   |
+LL |           let c = #[rustc_capture_analysis] || unsafe {
+   |  ___________________________________________^
+LL | |
+LL | |
+LL | |             println!("{}", (*t_ptr).0);
+...  |
+LL | |         };
+   | |_________^
+   |
+note: Capturing t_ptr[Deref,(0, 0)] -> Immutable
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:146:28
+   |
+LL |             println!("{}", (*t_ptr).0);
+   |                            ^^^^^^^^^^
+
+error: Min Capture analysis includes:
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:143:43
+   |
+LL |           let c = #[rustc_capture_analysis] || unsafe {
+   |  ___________________________________________^
+LL | |
+LL | |
+LL | |             println!("{}", (*t_ptr).0);
+...  |
+LL | |         };
+   | |_________^
+   |
+note: Min Capture t_ptr[] -> ByCopy
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:146:28
+   |
+LL |             println!("{}", (*t_ptr).0);
+   |                            ^^^^^^^^^^
+
+error: First Pass analysis includes:
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:160:43
+   |
+LL |           let c = #[rustc_capture_analysis] || {
+   |  ___________________________________________^
+LL | |
+LL | |
+LL | |             let x = unsafe { u.a.0 };
+...  |
+LL | |         };
+   | |_________^
+   |
+note: Capturing u[(0, 0),(0, 0)] -> ByCopy
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:163:30
+   |
+LL |             let x = unsafe { u.a.0 };
+   |                              ^^^^^
+
+error: Min Capture analysis includes:
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:160:43
+   |
+LL |           let c = #[rustc_capture_analysis] || {
+   |  ___________________________________________^
+LL | |
+LL | |
+LL | |             let x = unsafe { u.a.0 };
+...  |
+LL | |         };
+   | |_________^
+   |
+note: Min Capture u[] -> Immutable
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:163:30
+   |
+LL |             let x = unsafe { u.a.0 };
+   |                              ^^^^^
+
+error: First Pass analysis includes:
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:172:47
+   |
+LL |           let mut c = #[rustc_capture_analysis] || {
+   |  _______________________________________________^
+LL | |
+LL | |
+LL | |             u.b = true;
+...  |
+LL | |         };
+   | |_________^
+   |
+note: Capturing u[(1, 0)] -> Mutable
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:175:13
+   |
+LL |             u.b = true;
+   |             ^^^
+
+error: Min Capture analysis includes:
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:172:47
+   |
+LL |           let mut c = #[rustc_capture_analysis] || {
+   |  _______________________________________________^
+LL | |
+LL | |
+LL | |             u.b = true;
+...  |
+LL | |         };
+   | |_________^
+   |
+note: Min Capture u[] -> Mutable
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:175:13
+   |
+LL |             u.b = true;
+   |             ^^^
+
+error: First Pass analysis includes:
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:191:43
+   |
+LL |           let c = #[rustc_capture_analysis] || {
+   |  ___________________________________________^
+LL | |
+LL | |
+LL | |             let x = unsafe { u.a.0.len() };
+...  |
+LL | |         };
+   | |_________^
+   |
+note: Capturing u[(0, 0),(0, 0),Deref] -> Immutable
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:194:30
+   |
+LL |             let x = unsafe { u.a.0.len() };
+   |                              ^^^^^
+
+error: Min Capture analysis includes:
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:191:43
+   |
+LL |           let c = #[rustc_capture_analysis] || {
+   |  ___________________________________________^
+LL | |
+LL | |
+LL | |             let x = unsafe { u.a.0.len() };
+...  |
+LL | |         };
+   | |_________^
+   |
+note: Min Capture u[] -> ByCopy
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:194:30
+   |
+LL |             let x = unsafe { u.a.0.len() };
+   |                              ^^^^^
+
+error: First Pass analysis includes:
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:206:43
+   |
+LL |           let c = #[rustc_capture_analysis] || {
+   |  ___________________________________________^
+LL | |
+LL | |
+LL | |             let a = t.0;
+...  |
+LL | |         };
+   | |_________^
+   |
+note: Capturing t[(0, 0)] -> ByCopy
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:209:21
+   |
+LL |             let a = t.0;
+   |                     ^^^
+
+error: Min Capture analysis includes:
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:206:43
+   |
+LL |           let c = #[rustc_capture_analysis] || {
+   |  ___________________________________________^
+LL | |
+LL | |
+LL | |             let a = t.0;
+...  |
+LL | |         };
+   | |_________^
+   |
+note: Min Capture t[(0, 0)] -> ByCopy
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:209:21
+   |
+LL |             let a = t.0;
+   |                     ^^^
+
+error: First Pass analysis includes:
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:223:43
+   |
+LL |           let c = #[rustc_capture_analysis] || {
+   |  ___________________________________________^
+LL | |
+LL | |
+LL | |             let a = *t.0;
+...  |
+LL | |         };
+   | |_________^
+   |
+note: Capturing t[(0, 0),Deref] -> Immutable
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:226:21
+   |
+LL |             let a = *t.0;
+   |                     ^^^^
+
+error: Min Capture analysis includes:
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:223:43
+   |
+LL |           let c = #[rustc_capture_analysis] || {
+   |  ___________________________________________^
+LL | |
+LL | |
+LL | |             let a = *t.0;
+...  |
+LL | |         };
+   | |_________^
+   |
+note: Min Capture t[(0, 0),Deref] -> Immutable
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:226:21
+   |
+LL |             let a = *t.0;
+   |                     ^^^^
+
+error: First Pass analysis includes:
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:239:43
+   |
+LL |           let c = #[rustc_capture_analysis] || {
+   |  ___________________________________________^
+LL | |
+LL | |
+LL | |             let a = &raw const t.1;
+...  |
+LL | |         };
+   | |_________^
+   |
+note: Capturing t[(1, 0)] -> Immutable
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:242:32
+   |
+LL |             let a = &raw const t.1;
+   |                                ^^^
+
+error: Min Capture analysis includes:
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:239:43
+   |
+LL |           let c = #[rustc_capture_analysis] || {
+   |  ___________________________________________^
+LL | |
+LL | |
+LL | |             let a = &raw const t.1;
+...  |
+LL | |         };
+   | |_________^
+   |
+note: Min Capture t[(1, 0)] -> Immutable
+  --> $DIR/cromulent-copy-closure-captures-analysis-2021.rs:242:32
+   |
+LL |             let a = &raw const t.1;
+   |                                ^^^
+
+error: aborting due to 30 previous errors
+
